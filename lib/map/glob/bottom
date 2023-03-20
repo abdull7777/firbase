@@ -1,0 +1,22 @@
+import 'package:flutter/material.dart';
+
+bottomSheet(
+    {required BuildContext context,
+    required Widget widget,
+    double? initchildSize}) {
+  return showModalBottomSheet(
+    context: context,
+    isScrollControlled: true,
+    backgroundColor: Colors.transparent,
+    builder: (context) => DraggableScrollableSheet(
+      initialChildSize: initchildSize ?? 0.9,
+      maxChildSize: 0.9,
+      minChildSize: 0.3,
+      expand: true,
+      builder: (context, scrollController) => SingleChildScrollView(
+        controller: scrollController,
+        child: widget,
+      ),
+    ),
+  );
+}
